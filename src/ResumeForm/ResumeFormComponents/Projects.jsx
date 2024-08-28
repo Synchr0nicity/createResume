@@ -17,7 +17,11 @@ export default function Projects({
     ]);
   }
 
-  const handleNext = () => {
+  //this is repeated between projects and experience, and can be consolidated and reused. just pass
+  //the "project/job" as an argument
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const updatedProjectsData = newProjects.map(
       (project) => ({
         project: project.project || "",
@@ -37,7 +41,7 @@ export default function Projects({
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Projects and Applications</h2>
 
       {newProjects.map((_, index) => (
@@ -54,9 +58,7 @@ export default function Projects({
       >
         Add new project
       </button>
-      <button type="button" onClick={handleNext}>
-        Next
-      </button>
+      <button type="submit">Next</button>
     </form>
   );
 }

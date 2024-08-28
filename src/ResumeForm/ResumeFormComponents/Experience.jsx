@@ -1,55 +1,61 @@
+import { useState } from "react";
+import CreateNewJobs from "/src/ResumeForm/ResumeFormComponents/ExperienceComponents/CreateNewJobs";
+
 export default function Experience({
   formData,
-  handleChange,
-  handleNext,
+  setFormData,
+  setCurrentSection,
 }) {
+  const [newJobs, setNewJobs] = useState([{}]);
+
+  function handleNewJobs() {
+    setNewJobs((prevNewJobs) => [
+      ...prevNewJobs,
+      {},
+    ]);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const updatedJobsData = newJobs.map(
+      (job) => ({
+        role: job.role || "",
+        company: job.company || "",
+        timeFrame: job.company || "",
+        jobDescription: job.jobDescription || "",
+      })
+    );
+
+    setFormData((prevData) => ({
+      ...prevData,
+      jobs: updatedJobsData,
+    }));
+
+    setCurrentSection(
+      (prevSection) => prevSection + 1
+    );
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Work Experience</h2>
 
-      <label htmlFor="role">Role</label>
-      <input
-        type="text"
-        id="role"
-        name="role"
-        value={formData.role || ""}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="company">Company:</label>
-      <input
-        type="text"
-        id="company"
-        name="company"
-        value={formData.company || ""}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="timeframe">
-        Timeframe:
-      </label>
-      <input
-        type="text"
-        id="timeframe"
-        name="timeframe"
-        value={formData.timeframe || ""}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="jobDescription">
-        Job Description:
-      </label>
-      <textarea
-        id="jobDescription"
-        name="jobDescription"
-        value={formData.jobDescription || ""}
-        onChange={handleChange}
-        rows="4"
-        cols="50"
-      />
-      <button type="button" onClick={handleNext}>
-        Next
+      {newJobs.map((_, index) => (
+        <CreateNewJobs
+          key={index}
+          index={index}
+          setNewJobs={setNewJobs}
+          newJobs={newJobs}
+        />
+      ))}
+
+      <button
+        type="button"
+        onClick={handleNewJobs}
+      >
+        Add new job
       </button>
+      <button type="submit">Next</button>
     </form>
   );
 }

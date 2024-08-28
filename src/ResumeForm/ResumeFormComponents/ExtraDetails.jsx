@@ -1,10 +1,10 @@
 export default function ExtraDetails({
   formData,
   handleChange,
-  handleNext,
+  handleSubmit,
 }) {
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Extra information</h2>
 
       <label htmlFor="qualities">Qualities</label>
@@ -12,7 +12,10 @@ export default function ExtraDetails({
         type="text"
         id="qualities"
         name="qualities"
-        value={formData.qualities || ""}
+        value={
+          formData.extraDetails.qualities || ""
+        }
+        data-section="extraDetails"
         onChange={handleChange}
         required
       />
@@ -21,13 +24,12 @@ export default function ExtraDetails({
         type="text"
         id="skills"
         name="skills"
-        value={formData.skills || ""}
+        value={formData.extraDetails.skills || ""}
+        data-section="extraDetails"
         onChange={handleChange}
         required
       />
-      <button type="button" onClick={handleNext}>
-        Next
-      </button>
+      <button type="submit">Next</button>
     </form>
   );
 }

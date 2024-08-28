@@ -9,7 +9,9 @@ export default function ContactDetails({
     alert(
       "congratulations, you completed your resume."
     );
-    setActive((active = false));
+    setActive(
+      (prevActive) => (prevActive = false)
+    );
     console.log(formData);
     // Add logic to handle form submission, such as generating a resume
   };
@@ -22,7 +24,10 @@ export default function ContactDetails({
         type="text"
         id="gitHub"
         name="gitHub"
-        value={formData.gitHub || ""}
+        value={
+          formData.contactDetails.gitHub || ""
+        }
+        data-section="contactDetails"
         onChange={handleChange}
         required
       />
@@ -31,7 +36,10 @@ export default function ContactDetails({
         type="text"
         id="email"
         name="email"
-        value={formData.email || ""}
+        value={
+          formData.contactDetails.email || ""
+        }
+        data-section="contactDetails"
         onChange={handleChange}
         required
       />
@@ -40,7 +48,10 @@ export default function ContactDetails({
         type="text"
         id="whatsapp"
         name="whatsapp"
-        value={formData.whatsapp || ""}
+        value={
+          formData.contactDetails.whatsapp || ""
+        }
+        data-section="contactDetails"
         onChange={handleChange}
         required
       />
@@ -49,7 +60,10 @@ export default function ContactDetails({
         type="text"
         id="address"
         name="address"
-        value={formData.address || ""}
+        value={
+          formData.contactDetails.address || ""
+        }
+        data-section="contactDetails"
         onChange={handleChange}
         required
       />
