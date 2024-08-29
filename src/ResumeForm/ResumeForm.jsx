@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, {
+  useState,
+  useEffect,
+} from "react";
 import PersonalInformation from "/src/ResumeForm/ResumeFormComponents/PersonalInformation.jsx";
 import Projects from "/src/ResumeForm/ResumeFormComponents/Projects.jsx";
 import Experience from "/src/ResumeForm/ResumeFormComponents/Experience.jsx";
@@ -14,6 +17,10 @@ export default function ResumeForm({
   const [currentSection, setCurrentSection] =
     useState(1);
 
+  useEffect(() => {
+    console.log("Updated formData:", formData);
+  }, [formData]);
+
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
     const section = dataset.section;
@@ -25,6 +32,9 @@ export default function ResumeForm({
         [name]: value,
       },
     }));
+    async () => {
+      await console.log(formData);
+    };
   };
 
   const handleSubmit = (e) => {
@@ -41,7 +51,7 @@ export default function ResumeForm({
   };
 
   return (
-    <div>
+    <div className="form">
       {currentSection === 1 && (
         <PersonalInformation
           handleChange={handleChange}
