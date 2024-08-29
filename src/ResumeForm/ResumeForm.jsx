@@ -34,9 +34,11 @@ export default function ResumeForm({
     );
   };
 
-  // const handlePrevious = () => {
-  //   setCurrentSection(currentSection - 1);
-  // };
+  const handlePrevious = () => {
+    if (currentSection > 0) {
+      setCurrentSection((prev) => prev - 1); // Decrement currentSection to go back
+    }
+  };
 
   return (
     <div>
@@ -45,7 +47,7 @@ export default function ResumeForm({
           handleChange={handleChange}
           formData={formData}
           handleSubmit={handleSubmit}
-          // handlePrevious={handlePrevious}
+          handlePrevious={handlePrevious}
         />
       )}
       {currentSection === 2 && (
@@ -54,7 +56,7 @@ export default function ResumeForm({
           setFormData={setFormData}
           currentSection={currentSection}
           setCurrentSection={setCurrentSection}
-          // handlePrevious={handlePrevious}
+          handlePrevious={handlePrevious}
         />
       )}
       {currentSection === 3 && (
@@ -62,15 +64,16 @@ export default function ResumeForm({
           formData={formData}
           setFormData={setFormData}
           setCurrentSection={setCurrentSection}
-          // handlePrevious={handlePrevious}
+          handlePrevious={handlePrevious}
         />
       )}
       {currentSection === 4 && (
         <ExtraDetails
           handleChange={handleChange}
           formData={formData}
-          handleSubmit={handleSubmit}
-          // handlePrevious={handlePrevious}
+          setFormData={setFormData}
+          setCurrentSection={setCurrentSection}
+          handlePrevious={handlePrevious}
         />
       )}
       {currentSection === 5 && (
@@ -80,7 +83,7 @@ export default function ResumeForm({
           handleSubmit={handleSubmit}
           active={active}
           setActive={setActive}
-          // handlePrevious={handlePrevious}
+          handlePrevious={handlePrevious}
         />
       )}
     </div>

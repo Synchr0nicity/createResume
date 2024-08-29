@@ -41,9 +41,10 @@ export default function PersonalInformation({
       />
       <label htmlFor="website">Website:</label>
       <input
-        type="text"
+        type="url"
         id="website"
         name="website"
+        //this does not explain what a url is, its with https://www. so need to make this more obvious
         value={
           formData.personalInformation.website ||
           ""

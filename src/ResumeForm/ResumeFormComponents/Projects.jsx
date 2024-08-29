@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CreateNewProjects from "/src/ResumeForm/ResumeFormComponents/ProjectComponents/CreateNewProjects.jsx";
 
 export default function Projects({
   formData,
   setFormData,
   setCurrentSection,
+  handlePrevious,
 }) {
   const [newProjects, setNewProjects] = useState([
     {},
   ]);
+
+  useEffect(() => {
+    if (
+      formData.projects &&
+      formData.projects.length > 0
+    ) {
+      setNewProjects(formData.projects);
+    } else {
+      setNewProjects([{}]); // Default state if no projects in formData
+    }
+  }, [formData.projects]);
 
   function handleNewProject() {
     setNewProjects((prevNewProjects) => [
@@ -57,6 +69,12 @@ export default function Projects({
         onClick={handleNewProject}
       >
         Add new project
+      </button>
+      <button
+        type="button"
+        onClick={handlePrevious}
+      >
+        Back
       </button>
       <button type="submit">Next</button>
     </form>

@@ -10,10 +10,6 @@ function App() {
       website: "",
       summary: "",
     },
-    extraDetails: {
-      qualities: "",
-      skills: "",
-    },
     contactDetails: {
       gitHub: "",
       email: "",

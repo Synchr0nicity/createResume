@@ -3,6 +3,7 @@ export default function ContactDetails({
   handleChange,
   setActive,
   active,
+  handlePrevious,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function ContactDetails({
       <h2>Contact Details</h2>
       <label htmlFor="gitHub">Github:</label>
       <input
-        type="text"
+        type="url"
         id="gitHub"
         name="gitHub"
         value={
@@ -33,7 +34,7 @@ export default function ContactDetails({
       />
       <label htmlFor="email">Email:</label>
       <input
-        type="text"
+        type="email"
         id="email"
         name="email"
         value={
@@ -65,8 +66,13 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
-        required
       />
+      <button
+        type="button"
+        onClick={handlePrevious}
+      >
+        Back
+      </button>
       <button type="submit">Finalize</button>
     </form>
   );
