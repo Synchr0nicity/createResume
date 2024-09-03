@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function ExtraDetails({
   formData,
@@ -6,87 +6,123 @@ export default function ExtraDetails({
   setCurrentSection,
   handlePrevious,
 }) {
-  const [localData, setLocalData] = useState({
-    qualities: [{ name: "" }],
-    skills: [{ name: "" }],
-  });
-
   useEffect(() => {
-    if (
-      formData.extraDetails &&
-      Object.keys(formData.extraDetails).length >
-        0
-    ) {
-      setLocalData(formData.extraDetails);
-    } else {
-      setLocalData({
-        qualities: [{ name: "" }],
-        skills: [{ name: "" }],
-      });
+    if (!formData.extraDetails) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        extraDetails: {
+          qualities: [{ name: "" }],
+          skills: [{ name: "" }],
+        },
+      }));
     }
-  }, [formData.extraDetails]);
+  }, []);
 
   function handleChange(e, type, index) {
     const { value } = e.target;
-    const updatedData = { ...localData };
-    updatedData[type][index].name = value;
-    setLocalData(updatedData);
+
+    setFormData((prevData) => {
+      const updatedExtraDetails = {
+        ...prevData.extraDetails,
+      };
+
+      const updatedTypeArray = [
+        ...updatedExtraDetails[type],
+      ];
+
+      const updatedItem = {
+        ...updatedTypeArray[index],
+        name: value,
+      };
+
+      updatedTypeArray[index] = updatedItem;
+      updatedExtraDetails[type] =
+        updatedTypeArray;
+      return {
+        ...prevData,
+        extraDetails: updatedExtraDetails,
+      };
+    });
   }
 
   function handleAdd(type) {
-    const updatedData = { ...localData };
-    updatedData[type].push({ name: "" });
-    setLocalData(updatedData);
-    console.log("this works");
+    setFormData((prevData) => {
+      const updatedData = {
+        ...prevData,
+        extraDetails: {
+          ...prevData.extraDetails,
+          [type]: [
+            ...prevData.extraDetails[type],
+            { name: "" },
+          ],
+        },
+      };
+      return updatedData;
+    });
   }
 
   function handleRemove(type, index) {
-    const updatedData = { ...localData };
-    if (updatedData[type].length > 1) {
-      updatedData[type].splice(index, 1);
-      setLocalData(updatedData);
-    }
+    setFormData((prevData) => {
+      const updatedExtraDetails = {
+        ...prevData.extraDetails,
+      };
+      const updatedTypeArray = [
+        ...updatedExtraDetails[type],
+      ];
+
+      if (updatedTypeArray.length > 1) {
+        updatedTypeArray.splice(index, 1);
+      }
+
+      updatedExtraDetails[type] =
+        updatedTypeArray;
+
+      return {
+        ...prevData,
+        extraDetails: updatedExtraDetails,
+      };
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const extraDetails = localData;
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      extraDetails,
-    }));
     setCurrentSection(
       (prevSection) => prevSection + 1
     );
   }
 
   function renderLists(type) {
-    return localData[type].map((item, index) => {
-      return (
-        <div key={`${type}-${index}`}>
-          <input
-            type="text"
-            id={`${type}-${index}`}
-            name="qualities"
-            value={item.name}
-            onChange={(e) =>
-              handleChange(e, type, index)
-            }
-            required
-          />
-          ;
-          <button
-            type="button"
-            onClick={() =>
-              handleRemove(type, index)
-            }
-          >
-            Remove
-          </button>
-        </div>
-      );
-    });
+    return formData.extraDetails[type].map(
+      (item, index) => {
+        return (
+          <div key={`${type}-${index}`}>
+            <input
+              type="text"
+              id={`${type}-${index}`}
+              name={type}
+              value={item.name}
+              onChange={(e) =>
+                handleChange(e, type, index)
+              }
+              required
+            />
+            ;
+            <button
+              type="button"
+              onClick={() =>
+                handleRemove(type, index)
+              }
+            >
+              Remove
+            </button>
+          </div>
+        );
+      }
+    );
+  }
+
+  if (!formData.extraDetails) {
+    return null;
   }
 
   return (

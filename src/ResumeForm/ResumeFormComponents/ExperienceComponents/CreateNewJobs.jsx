@@ -1,70 +1,69 @@
 export default function CreateNewJobs({
-  index,
-  newJobs,
-  setNewJobs,
+  jobId,
+  job,
+  handleChange,
+  handleRemove,
 }) {
-  const jobData = newJobs[index] || {};
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setNewJobs((prevJobs) => {
-      const updatedJobs = [...prevJobs];
-      updatedJobs[index] = {
-        ...updatedJobs[index],
-        [name]: value,
-      };
-      return updatedJobs;
-    });
-  }
-
   return (
-    <div key={index}>
-      <label htmlFor={`role${index}`}>Role</label>
+    <div key={jobId}>
+      <label htmlFor={`role${jobId}`}>Role</label>
       <input
         type="text"
-        id={`role${index}`}
+        id={`role${jobId}`}
         name="role"
-        value={jobData.role || ""}
+        value={job.role || ""}
         data-section="experience"
-        onChange={handleChange}
+        onChange={(e) => handleChange(e, "role")}
         required
       />
-      <label htmlFor={`company${index}`}>
+      <label htmlFor={`company${jobId}`}>
         Company:
       </label>
       <input
         type="text"
-        id={`company${index}`}
+        id={`company${jobId}`}
         name="company"
-        value={jobData.company || ""}
+        value={job.company || ""}
         data-section="experience"
-        onChange={handleChange}
+        onChange={(e) =>
+          handleChange(e, "company")
+        }
         required
       />
-      <label htmlFor={`timeframe${index}`}>
+      <label htmlFor={`timeframe${jobId}`}>
         Timeframe:
       </label>
       <input
         type="text"
-        id={`timeframe${index}`}
+        id={`timeframe${jobId}`}
         name="timeframe"
-        value={jobData.timeframe || ""}
+        value={job.timeframe || ""}
         data-section="experience"
-        onChange={handleChange}
+        onChange={(e) =>
+          handleChange(e, "timeframe")
+        }
         required
       />
-      <label htmlFor={`jobDescription${index}`}>
+      <label htmlFor={`jobDescription${jobId}`}>
         Job Description:
       </label>
       <textarea
-        id={`jobDescription${index}`}
+        id={`jobDescription${jobId}`}
         name="jobDescription"
-        value={jobData.jobDescription || ""}
+        value={job.jobDescription || ""}
         data-section="experience"
-        onChange={handleChange}
+        onChange={(e) =>
+          handleChange(e, "jobDescription")
+        }
         rows="4"
         cols="50"
       />
+      <button
+        type="button"
+        onClick={handleRemove}
+      >
+        Remove
+      </button>
     </div>
   );
 }

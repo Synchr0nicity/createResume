@@ -1,67 +1,86 @@
-import { useState, useEffect } from "react";
 import CreateNewProjects from "/src/ResumeForm/ResumeFormComponents/ProjectComponents/CreateNewProjects.jsx";
-
+import { useEffect } from "react";
 export default function Projects({
   formData,
   setFormData,
   setCurrentSection,
   handlePrevious,
 }) {
-  const [newProjects, setNewProjects] = useState([
-    {},
-  ]);
-
   useEffect(() => {
     if (
-      formData.projects &&
-      formData.projects.length > 0
+      !formData.projects ||
+      Object.keys(formData.projects).length === 0
     ) {
-      setNewProjects(formData.projects);
-    } else {
-      setNewProjects([{}]); // Default state if no projects in formData
+      handleNewProject();
     }
   }, [formData.projects]);
 
   function handleNewProject() {
-    setNewProjects((prevNewProjects) => [
-      ...prevNewProjects,
-      {},
-    ]);
+    const newProjectId = crypto.randomUUID();
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      projects: {
+        ...prevFormData.projects,
+        [newProjectId]: {
+          project: "",
+          languages: "",
+          projectDescription: "",
+        },
+      },
+    }));
   }
 
-  //this is repeated between projects and experience, and can be consolidated and reused. just pass
-  //the "project/job" as an argument
+  function handleChange(e, projectId, field) {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      projects: {
+        ...prevData.projects,
+        [projectId]: {
+          ...prevData.projects[projectId],
+          [field]: value,
+        },
+      },
+    }));
+  }
+
+  function handleRemove(projectId) {
+    setFormData((prevFormData) => {
+      const {
+        [projectId]: _,
+        ...remainingProjects
+      } = prevFormData.projects;
+      return {
+        ...prevFormData,
+        projects: remainingProjects,
+      };
+    });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedProjectsData = newProjects.map(
-      (project) => ({
-        project: project.project || "",
-        languages: project.languages || "",
-        projectDescription:
-          project.projectDescription || "",
-      })
-    );
-
-    setFormData((prevData) => ({
-      ...prevData,
-      projects: updatedProjectsData,
-    }));
     setCurrentSection(
       (prevSection) => prevSection + 1
     );
   };
 
+  const projects = formData.projects || {};
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Projects and Applications</h2>
 
-      {newProjects.map((_, index) => (
+      {Object.keys(projects).map((projectId) => (
         <CreateNewProjects
-          key={index}
-          index={index}
-          setNewProjects={setNewProjects}
-          newProjects={newProjects}
+          key={projectId}
+          projectId={projectId}
+          project={formData.projects[projectId]}
+          handleChange={(e, field) =>
+            handleChange(e, projectId, field)
+          }
+          handleRemove={() =>
+            handleRemove(projectId)
+          }
         />
       ))}
       <button

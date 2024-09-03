@@ -15,7 +15,7 @@ export default function ResumeForm({
   setActive,
 }) {
   const [currentSection, setCurrentSection] =
-    useState(1);
+    useState(0);
 
   useEffect(() => {
     console.log("Updated formData:", formData);
@@ -32,9 +32,6 @@ export default function ResumeForm({
         [name]: value,
       },
     }));
-    async () => {
-      await console.log(formData);
-    };
   };
 
   const handleSubmit = (e) => {
@@ -79,7 +76,6 @@ export default function ResumeForm({
       )}
       {currentSection === 4 && (
         <ExtraDetails
-          handleChange={handleChange}
           formData={formData}
           setFormData={setFormData}
           setCurrentSection={setCurrentSection}

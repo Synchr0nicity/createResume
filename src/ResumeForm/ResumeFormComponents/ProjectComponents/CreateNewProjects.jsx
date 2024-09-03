@@ -1,62 +1,59 @@
 export default function CreateNewProjects({
-  index,
-  newProjects,
-  setNewProjects,
+  projectId,
+  project,
+  handleChange,
+  handleRemove,
 }) {
-  const projectData = newProjects[index] || {};
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewProjects((prevProjects) => {
-      const updatedProjects = [...prevProjects];
-      updatedProjects[index] = {
-        ...updatedProjects[index],
-        [name]: value,
-      };
-      return updatedProjects;
-    });
-  };
-
   return (
-    <div key={index}>
-      <label htmlFor={`project${index}`}>
+    <div key={projectId}>
+      <label htmlFor={`project${projectId}`}>
         Project:
       </label>
       <input
         type="text"
-        id={`project${index}`}
+        id={`project${projectId}`}
         name="project"
-        value={projectData.project || ""}
-        onChange={handleChange}
+        value={project.project || ""}
+        onChange={(e) =>
+          handleChange(e, "project")
+        }
         required
       />
-      <label htmlFor={`languages${index}`}>
+      <label htmlFor={`languages${projectId}`}>
         Languages used:
       </label>
       <input
         type="text"
-        id={`languages${index}`}
+        id={`languages${projectId}`}
         name="languages"
-        value={projectData.languages || ""}
-        onChange={handleChange}
+        value={project.languages || ""}
+        onChange={(e) =>
+          handleChange(e, "languages")
+        }
         required
       />
       <label
-        htmlFor={`projectDescription${index}`}
+        htmlFor={`projectDescription${projectId}`}
       >
         Project Description:
       </label>
       <textarea
-        id={`projectDescription${index}`}
+        id={`projectDescription${projectId}`}
         name="projectDescription"
-        value={
-          projectData.projectDescription || ""
+        value={project.projectDescription || ""}
+        onChange={(e) =>
+          handleChange(e, "projectDescription")
         }
-        onChange={handleChange}
         rows="4"
         cols="50"
         required
       />
+      <button
+        type="button"
+        onClick={handleRemove}
+      >
+        Remove
+      </button>
     </div>
   );
 }

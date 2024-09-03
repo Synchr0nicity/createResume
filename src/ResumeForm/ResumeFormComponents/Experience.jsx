@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import CreateNewJobs from "/src/ResumeForm/ResumeFormComponents/ExperienceComponents/CreateNewJobs";
 
 export default function Experience({
@@ -7,56 +7,75 @@ export default function Experience({
   setCurrentSection,
   handlePrevious,
 }) {
-  const [newJobs, setNewJobs] = useState([{}]);
-
   useEffect(() => {
     if (
-      formData.jobs &&
-      formData.jobs.length > 0
+      !formData.jobs ||
+      Object.keys(formData.jobs).length === 0
     ) {
-      setNewJobs(formData.jobs);
-    } else {
-      setNewJobs([{}]); // Default state if no projects in formData
+      handleNewJobs();
     }
   }, [formData.jobs]);
 
   function handleNewJobs() {
-    setNewJobs((prevNewJobs) => [
-      ...prevNewJobs,
-      {},
-    ]);
+    const jobId = crypto.randomUUID();
+    setFormData((prevData) => ({
+      ...prevData,
+      jobs: {
+        ...prevData.jobs,
+        [jobId]: {
+          role: "",
+          company: "",
+          timeframe: "",
+          jobDescription: "",
+        },
+      },
+    }));
+  }
+
+  function handleChange(e, jobId, field) {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      jobs: {
+        ...prevData.jobs,
+        [jobId]: {
+          ...prevData.jobs[jobId],
+          [field]: value,
+        },
+      },
+    }));
+  }
+
+  function handleRemove(jobId) {
+    setFormData((prevData) => {
+      const { [jobId]: _, ...remainingJobs } =
+        prevData.jobs;
+      return { ...prevData, jobs: remainingJobs };
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const updatedJobsData = newJobs.map(
-      (job) => ({
-        role: job.role || "",
-        company: job.company || "",
-        timeFrame: job.timeframe || "",
-        jobDescription: job.jobDescription || "",
-      })
-    );
-    setFormData((prevData) => ({
-      ...prevData,
-      jobs: updatedJobsData,
-    }));
-
     setCurrentSection(
       (prevSection) => prevSection + 1
     );
   }
 
+  const jobs = formData.jobs || {};
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Work Experience</h2>
 
-      {newJobs.map((_, index) => (
+      {Object.keys(jobs).map((jobId) => (
         <CreateNewJobs
-          key={index}
-          index={index}
-          setNewJobs={setNewJobs}
-          newJobs={newJobs}
+          key={jobId}
+          jobId={jobId}
+          job={formData.jobs[jobId]}
+          handleChange={(e, field) =>
+            handleChange(e, jobId, field)
+          }
+          handleRemove={() => handleRemove(jobId)}
         />
       ))}
 
