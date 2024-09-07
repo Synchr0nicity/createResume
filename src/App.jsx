@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import ResumeForm from "/src/ResumeForm/ResumeForm.jsx";
 import Resume from "/src/ResumeRendered/Resume.jsx";
@@ -50,6 +50,19 @@ function App() {
         />
       )}
       <Resume formData={formData} />
+      {!active && (
+        <button
+          type="button"
+          onClick={() => {
+            setActive(
+              (prevActive) => (prevActive = true)
+            );
+          }}
+          id="editBtn"
+        >
+          Edit Resume
+        </button>
+      )}
     </div>
   );
 }

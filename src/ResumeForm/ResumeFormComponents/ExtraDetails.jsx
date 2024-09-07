@@ -113,12 +113,6 @@ export default function ExtraDetails({
               placeholder={`${type}`}
               required
             />
-            <img
-              type="button"
-              onClick={() => handleAdd(type)}
-              src="/icons8-add-32 (1).png"
-              alt="add button"
-            />
           </div>
         );
       }
@@ -134,10 +128,34 @@ export default function ExtraDetails({
       onSubmit={handleSubmit}
       className="extraDetailsForm"
     >
-      <h2>Qualities</h2>
-      {renderLists("qualities")}
-      <h2>Skills</h2>
-      {renderLists("skills")}
+      <div id="extraDetailsContainer">
+        <div id="qualities">
+          <div className="addDetailsContainer">
+            <h2>Qualities</h2>
+            <img
+              type="button"
+              onClick={() =>
+                handleAdd("qualities")
+              }
+              src="/icons8-add-32 (1).png"
+              alt="add button"
+            />
+          </div>
+          {renderLists("qualities")}
+        </div>
+        <div id="skills">
+          <div className="addDetailsContainer">
+            <h2>Skills</h2>
+            <img
+              type="button"
+              onClick={() => handleAdd("skills")}
+              src="/icons8-add-32 (1).png"
+              alt="add button"
+            />
+          </div>
+          {renderLists("skills")}
+        </div>
+      </div>
       <div className="btnContainer">
         <button
           type="button"

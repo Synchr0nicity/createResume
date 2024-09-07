@@ -65,6 +65,7 @@ form button[type="submit"] {
   display: inline-block;
   padding: 0 30px 0 0;
   border-left: solid black 2px;
+  position: relative;
 }
 
 /*                                      ////                        ////                      */
@@ -102,15 +103,6 @@ form button[type="submit"] {
   padding: 24px;
   border-radius: 8px;
   /* margin-top: 200px; */
-}
-
-.extraDetailsForm {
-  min-width: 475.5px;
-  max-width: 475.5px;
-  margin: 10px 0 0 50px;
-  padding: 24px;
-  border-radius: 8px;
-  /* margin-top: 420px; */
 }
 
 /* input forms */
@@ -162,4 +154,41 @@ img {
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+
+/* extra details form sextion */
+
+.extraDetailsForm {
+  display: flex;
+  flex-direction: column;
+  min-width: 475.5px;
+  max-width: 475.5px;
+  margin: 10px 0 0 50px;
+  padding: 24px;
+  border-radius: 8px;
+  /* margin-top: 420px; */
+}
+
+.extraDetailsForm input {
+  margin-bottom: 4px;
+}
+
+#extraDetailsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#qualities {
+  min-height: 70px;
+}
+
+#skills {
+  min-height: 70px;
+}
+
+.addDetailsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }

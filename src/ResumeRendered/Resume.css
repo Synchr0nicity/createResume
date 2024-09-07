@@ -98,13 +98,12 @@ section {
   margin-right: auto;
 }
 
-/* Project section */
+/* Contact details section*/
 .contactDetailsSection h3 {
   /* color: rgb(221, 221, 106); */
   color: rgb(204, 76, 97);
 }
 
-/* Contact details section */
 .contactDetailsSection {
   padding: 0 20px 20px 20px;
 }
@@ -112,9 +111,11 @@ section {
 .contactDetailsSection p {
   font-size: 13px;
 }
+
 /* Project section */
 
 .projectsContainer {
+  min-width: 120%;
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
@@ -124,6 +125,10 @@ section {
 }
 
 /* experience section */
+.experienceSection {
+  min-width: 120%;
+}
+
 .experienceSection .miniContainer {
   display: flex;
   gap: 45px;
@@ -170,4 +175,15 @@ section {
   padding: 0;
   margin-bottom: 7px;
   border-bottom: solid rgb(221, 221, 106) 2px;
+}
+
+/* edit button */
+#editBtn {
+  font-size: 20px;
+  height: 50px;
+  width: 150px;
+  position: fixed;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
 }

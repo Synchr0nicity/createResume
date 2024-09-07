@@ -16,10 +16,22 @@ export default function ResumeForm({
 }) {
   const [currentSection, setCurrentSection] =
     useState(1);
-
   useEffect(() => {
-    console.log("Updated formData:", formData);
-  }, [formData]);
+    const storedFormData =
+      localStorage.getItem("formData");
+    const storedSectionData =
+      localStorage.getItem("currentSection");
+
+    if (storedFormData) {
+      setFormData(JSON.parse(storedFormData));
+    }
+
+    if (storedSectionData) {
+      setCurrentSection(
+        JSON.parse(storedSectionData)
+      );
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
@@ -36,32 +48,52 @@ export default function ResumeForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem(
+      "formData",
+      JSON.stringify(formData)
+    );
+
     if (currentSection === 5) {
       finalSubmit();
     } else {
-      setCurrentSection(
-        (prevSection) => prevSection + 1
+      const newSection = currentSection + 1;
+      setCurrentSection(newSection);
+      localStorage.setItem(
+        "currentSection",
+        newSection
       );
     }
   };
 
   const finalSubmit = () => {
     alert(
-      "congratulations, you completed your resume."
+      "Congratulations, you completed your resume."
     );
-    setActive(
-      (prevActive) => (prevActive = false)
-    );
+    setActive(false);
+
+    // const newSection = currentSection + 1;
+    // setCurrentSection(newSection);
+    // localStorage.setItem(
+    //   "currentSection",
+    //   newSection
+    // );
   };
 
   const handlePrevious = () => {
     if (currentSection > 0) {
-      setCurrentSection((prev) => prev - 1); // Decrement currentSection to go back
+      setCurrentSection((prev) => {
+        const newSection = prev - 1;
+        localStorage.setItem(
+          "currentSection",
+          JSON.stringify(newSection)
+        );
+        return newSection;
+      }); // Decrement currentSection to go back
     }
   };
 
   return (
-    <div className="formContainer">
+    <div className={"formContainer"}>
       {currentSection === 1 && (
         <PersonalInformation
           handleChange={handleChange}
