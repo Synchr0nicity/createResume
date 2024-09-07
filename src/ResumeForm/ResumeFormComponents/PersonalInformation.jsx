@@ -4,15 +4,11 @@ export default function PersonalInformation({
   handleSubmit,
 }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="personalDetailsForm"
+    >
       <h2>Personal Information</h2>
-
-      <label htmlFor="name">Full Name:</label>
-      {/* {!isValid && (
-        <p>
-          Input must be more than 4 characters.
-        </p>
-      )} */}
       <input
         type="text"
         id="name"
@@ -22,11 +18,9 @@ export default function PersonalInformation({
         }
         data-section="personalInformation"
         onChange={handleChange}
+        placeholder="Full Name"
         required
       />
-      <label htmlFor="currentJob">
-        Current Job Title:
-      </label>
       <input
         type="text"
         id="currentJob"
@@ -37,22 +31,9 @@ export default function PersonalInformation({
         }
         data-section="personalInformation"
         onChange={handleChange}
+        placeholder="Current Job Title"
         required
       />
-      <label htmlFor="website">Website:</label>
-      <input
-        type="url"
-        id="website"
-        name="website"
-        //this does not explain what a url is, its with https://www. so need to make this more obvious
-        value={
-          formData.personalInformation.website ||
-          ""
-        }
-        data-section="personalInformation"
-        onChange={handleChange}
-      />
-      <label htmlFor="summary">Summary:</label>
       <textarea
         id="summary"
         name="summary"
@@ -64,6 +45,7 @@ export default function PersonalInformation({
         onChange={handleChange}
         rows="4" // Adjust the number of visible rows
         cols="50" // Adjust the width in characters
+        placeholder="Personal Summary"
         required
       />
       <button type="submit">Next</button>

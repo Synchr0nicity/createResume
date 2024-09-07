@@ -1,26 +1,15 @@
 export default function ContactDetails({
   formData,
   handleChange,
-  setActive,
-  active,
+  handleSubmit,
   handlePrevious,
 }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(
-      "congratulations, you completed your resume."
-    );
-    setActive(
-      (prevActive) => (prevActive = false)
-    );
-    console.log(formData);
-    // Add logic to handle form submission, such as generating a resume
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="contactDetailsForm"
+    >
       <h2>Contact Details</h2>
-      <label htmlFor="gitHub">Github:</label>
       <input
         type="url"
         id="gitHub"
@@ -30,9 +19,9 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
+        placeholder="Github"
         required
       />
-      <label htmlFor="email">Email:</label>
       <input
         type="email"
         id="email"
@@ -42,9 +31,9 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
+        placeholder="Email"
         required
       />
-      <label htmlFor="whatsapp">Whatsapp:</label>
       <input
         type="text"
         id="whatsapp"
@@ -54,9 +43,9 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
+        placeholder="Whatsapp"
         required
       />
-      <label htmlFor="address">Address:</label>
       <input
         type="text"
         id="address"
@@ -66,14 +55,17 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
+        placeholder="Address"
       />
-      <button
-        type="button"
-        onClick={handlePrevious}
-      >
-        Back
-      </button>
-      <button type="submit">Finalize</button>
+      <div className="btnContainer">
+        <button
+          type="button"
+          onClick={handlePrevious}
+        >
+          Back
+        </button>
+        <button type="submit">Next</button>
+      </div>
     </form>
   );
 }

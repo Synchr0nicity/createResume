@@ -40,8 +40,7 @@ function App() {
   const [active, setActive] = useState(true);
 
   return (
-    <>
-      <Resume formData={formData} />;
+    <div className="mainContainer">
       {active && (
         <ResumeForm
           active={active}
@@ -50,7 +49,8 @@ function App() {
           setFormData={setFormData}
         />
       )}
-    </>
+      <Resume formData={formData} />
+    </div>
   );
 }
 

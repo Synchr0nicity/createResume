@@ -3,12 +3,10 @@ export default function CreateNewProjects({
   project,
   handleChange,
   handleRemove,
+  handleAdd,
 }) {
   return (
     <div key={projectId}>
-      <label htmlFor={`project${projectId}`}>
-        Project:
-      </label>
       <input
         type="text"
         id={`project${projectId}`}
@@ -17,11 +15,9 @@ export default function CreateNewProjects({
         onChange={(e) =>
           handleChange(e, "project")
         }
+        placeholder="Project"
         required
       />
-      <label htmlFor={`languages${projectId}`}>
-        Languages used:
-      </label>
       <input
         type="text"
         id={`languages${projectId}`}
@@ -30,13 +26,9 @@ export default function CreateNewProjects({
         onChange={(e) =>
           handleChange(e, "languages")
         }
+        placeholder="Languages used"
         required
       />
-      <label
-        htmlFor={`projectDescription${projectId}`}
-      >
-        Project Description:
-      </label>
       <textarea
         id={`projectDescription${projectId}`}
         name="projectDescription"
@@ -46,14 +38,23 @@ export default function CreateNewProjects({
         }
         rows="4"
         cols="50"
+        placeholder="Project Description"
         required
       />
-      <button
-        type="button"
-        onClick={handleRemove}
-      >
-        Remove
-      </button>
+      <div className="btnContainer">
+        <img
+          src="/icons8-remove-32 (1).png"
+          type="button"
+          onClick={handleRemove}
+          className="removeIcon"
+        />
+        <img
+          src="public/icons8-add-32 (1).png"
+          type="button"
+          onClick={handleAdd}
+          className="addIcon"
+        />
+      </div>
     </div>
   );
 }

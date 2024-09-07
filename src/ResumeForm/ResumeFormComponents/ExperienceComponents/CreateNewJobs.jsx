@@ -3,10 +3,10 @@ export default function CreateNewJobs({
   job,
   handleChange,
   handleRemove,
+  handleAdd,
 }) {
   return (
     <div key={jobId}>
-      <label htmlFor={`role${jobId}`}>Role</label>
       <input
         type="text"
         id={`role${jobId}`}
@@ -14,11 +14,9 @@ export default function CreateNewJobs({
         value={job.role || ""}
         data-section="experience"
         onChange={(e) => handleChange(e, "role")}
+        placeholder="Role"
         required
       />
-      <label htmlFor={`company${jobId}`}>
-        Company:
-      </label>
       <input
         type="text"
         id={`company${jobId}`}
@@ -28,11 +26,9 @@ export default function CreateNewJobs({
         onChange={(e) =>
           handleChange(e, "company")
         }
+        placeholder="Company"
         required
       />
-      <label htmlFor={`timeframe${jobId}`}>
-        Timeframe:
-      </label>
       <input
         type="text"
         id={`timeframe${jobId}`}
@@ -42,11 +38,9 @@ export default function CreateNewJobs({
         onChange={(e) =>
           handleChange(e, "timeframe")
         }
+        placeholder="Timeframe"
         required
       />
-      <label htmlFor={`jobDescription${jobId}`}>
-        Job Description:
-      </label>
       <textarea
         id={`jobDescription${jobId}`}
         name="jobDescription"
@@ -57,13 +51,20 @@ export default function CreateNewJobs({
         }
         rows="4"
         cols="50"
+        placeholder="Job Description"
       />
-      <button
-        type="button"
-        onClick={handleRemove}
-      >
-        Remove
-      </button>
+      <div className="btnContainer">
+        <img
+          src="/icons8-add-32 (1).png"
+          type="button"
+          onClick={handleAdd}
+        />
+        <img
+          src="/icons8-remove-32 (1).png"
+          type="button"
+          onClick={handleRemove}
+        />
+      </div>
     </div>
   );
 }

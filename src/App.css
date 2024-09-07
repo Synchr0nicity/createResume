@@ -1,13 +1,11 @@
 html,
 body {
+  background-color: burlywood;
   display: block;
   box-sizing: border-box;
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-body {
 }
 
 /* Style the form with grid */
@@ -56,14 +54,112 @@ form button[type="submit"] {
   justify-self: center; /* Center the button horizontally */
 }
 
-.form {
+.mainContainer {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  height: 100vh;
+}
+
+.formContainer {
   display: inline-block;
   padding: 0 30px 0 0;
   border-left: solid black 2px;
-  border-bottom: solid black 2px;
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 
 /*                                      ////                        ////                      */
+
+.personalDetailsForm {
+  min-width: 475.5px;
+  max-width: 475.5px;
+  margin: 10px 0 0 50px;
+  padding: 24px;
+  border: none;
+  border-radius: 8px;
+}
+
+.contactDetailsForm {
+  min-width: 475.5px;
+  max-width: 475.5px;
+  margin: 10px 0 0 50px;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.projectsForm {
+  min-width: 475.5px;
+  max-width: 475.5px;
+  margin: 10px 0 0 50px;
+  padding: 24px;
+  border-radius: 8px;
+  /* margin-top: 200px; */
+}
+
+.experienceForm {
+  min-width: 475.5px;
+  max-width: 475.5px;
+  margin: 10px 0 0 50px;
+  padding: 24px;
+  border-radius: 8px;
+  /* margin-top: 200px; */
+}
+
+.extraDetailsForm {
+  min-width: 475.5px;
+  max-width: 475.5px;
+  margin: 10px 0 0 50px;
+  padding: 24px;
+  border-radius: 8px;
+  /* margin-top: 420px; */
+}
+
+/* input forms */
+input,
+textarea {
+  padding: 8px;
+  border: none;
+  background-color: #eee;
+  border-radius: 8px;
+}
+textarea::placeholder {
+  text-align: center;
+  line-height: 60px;
+}
+
+button {
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(204, 76, 97);
+}
+
+button:active {
+  font-size: 15px;
+  padding: 5px 14px;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  grid-column: 1 / -1;
+  margin: 0 auto;
+  /* position: absolute;
+  gap: 15px;
+  top: 80%;
+  left: 33%; */
+}
+
+.btnRemoveContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

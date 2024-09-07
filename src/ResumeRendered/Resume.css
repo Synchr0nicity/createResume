@@ -1,9 +1,173 @@
-.projectBox {
-  width: 300px;
-  border: black 2px solid;
+.resumeContainer {
+  margin: 10px auto 0 auto;
+  width: 595px;
+  height: 842px;
+  color: white;
+  background-color: #2b323a;
+  display: grid;
+  grid-template-columns: 1fr 24fr;
+  padding: 10px 20px 30px 20px;
+  border: solid 1px black;
+  justify-self: end;
+  position: relative;
 }
 
-.experienceBox {
-  width: 300px;
-  border: black 2px solid;
+.number-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resumeMargin {
+  margin-right: 12px;
+  font-size: 13px;
+  /* overflow: hidden; */
+}
+
+.resumeContent {
+  transform: scale(
+    0.8
+  ); /* 90% of the original size */
+  transform-origin: top left; /* Keep the origin at the top-left */
+  width: 100%;
+}
+
+footer {
+  transform: scale(
+    0.95
+  ); /* 90% of the original size */
+  transform-origin: top left; /* Keep the origin at the top-left */
+  width: 120%;
+}
+/* colors, fonts, etc */
+.symbols {
+  color: #2dedff;
+}
+
+h1 {
+  color: rgb(221, 221, 106);
+}
+
+h3 {
+}
+h4 {
+  letter-spacing: 1.5px;
+  margin-block-start: 30px;
+  margin-block-end: 10px;
+  color: rgb(204, 76, 97);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+.shadow {
+  box-shadow: -10px 8px 0 rgba(0, 0, 0, 1);
+}
+/* personal details */
+
+.personalDetailsSection {
+  min-width: 100%;
+}
+
+.largeContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+}
+
+.personalDetailsSection .miniContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.personalDetailsSection p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Project section */
+.contactDetailsSection h3 {
+  /* color: rgb(221, 221, 106); */
+  color: rgb(204, 76, 97);
+}
+
+/* Contact details section */
+.contactDetailsSection {
+  padding: 0 20px 20px 20px;
+}
+
+.contactDetailsSection p {
+  font-size: 13px;
+}
+/* Project section */
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+  gap: 14px;
+}
+
+/* experience section */
+.experienceSection .miniContainer {
+  display: flex;
+  gap: 45px;
+  align-items: center;
+}
+
+.experienceContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+  gap: 14px;
+}
+
+/* extra Details section */
+.extraDetailsSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+.skillsContainer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qualitiesContainer {
+  margin: 0;
+  text-align: left;
+}
+
+.qualitiesListContainer,
+.skillsListContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  padding-inline-start: 0;
+}
+
+.qualitiesListContainer li,
+.skillsListContainer li {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 7px;
+  border-bottom: solid rgb(221, 221, 106) 2px;
 }

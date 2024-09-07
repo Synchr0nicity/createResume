@@ -6,6 +6,7 @@ export default function Experience({
   setFormData,
   setCurrentSection,
   handlePrevious,
+  handleSubmit,
 }) {
   useEffect(() => {
     if (
@@ -54,17 +55,13 @@ export default function Experience({
     });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setCurrentSection(
-      (prevSection) => prevSection + 1
-    );
-  }
-
   const jobs = formData.jobs || {};
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="experienceForm"
+    >
       <h2>Work Experience</h2>
 
       {Object.keys(jobs).map((jobId) => (
@@ -76,22 +73,18 @@ export default function Experience({
             handleChange(e, jobId, field)
           }
           handleRemove={() => handleRemove(jobId)}
+          handleAdd={handleNewJobs}
         />
       ))}
-
-      <button
-        type="button"
-        onClick={handleNewJobs}
-      >
-        Add new job
-      </button>
-      <button
-        type="button"
-        onClick={handlePrevious}
-      >
-        Back
-      </button>
-      <button type="submit">Next</button>
+      <div className="btnContainer">
+        <button
+          type="button"
+          onClick={handlePrevious}
+        >
+          Back
+        </button>
+        <button type="submit">Next</button>
+      </div>
     </form>
   );
 }

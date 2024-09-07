@@ -5,6 +5,8 @@ export default function ExtraDetails({
   setFormData,
   setCurrentSection,
   handlePrevious,
+  setActive,
+  handleSubmit,
 }) {
   useEffect(() => {
     if (!formData.extraDetails) {
@@ -84,18 +86,22 @@ export default function ExtraDetails({
     });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setCurrentSection(
-      (prevSection) => prevSection + 1
-    );
-  }
-
   function renderLists(type) {
     return formData.extraDetails[type].map(
       (item, index) => {
         return (
-          <div key={`${type}-${index}`}>
+          <div
+            key={`${type}-${index}`}
+            className="btnRemoveContainer"
+          >
+            <img
+              type="button"
+              onClick={() =>
+                handleRemove(type, index)
+              }
+              src="/icons8-remove-32 (1).png"
+              alt="remove icon"
+            />
             <input
               type="text"
               id={`${type}-${index}`}
@@ -104,17 +110,15 @@ export default function ExtraDetails({
               onChange={(e) =>
                 handleChange(e, type, index)
               }
+              placeholder={`${type}`}
               required
             />
-            ;
-            <button
+            <img
               type="button"
-              onClick={() =>
-                handleRemove(type, index)
-              }
-            >
-              Remove
-            </button>
+              onClick={() => handleAdd(type)}
+              src="/icons8-add-32 (1).png"
+              alt="add button"
+            />
           </div>
         );
       }
@@ -126,34 +130,23 @@ export default function ExtraDetails({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="extraDetailsForm"
+    >
       <h2>Qualities</h2>
-      <div>
-        {renderLists("qualities")}
-        <button
-          type="button"
-          onClick={() => handleAdd("qualities")}
-        >
-          Add Quality
-        </button>
-      </div>
+      {renderLists("qualities")}
       <h2>Skills</h2>
-      <div>
-        {renderLists("skills")}
+      {renderLists("skills")}
+      <div className="btnContainer">
         <button
           type="button"
-          onClick={() => handleAdd("skills")}
+          onClick={handlePrevious}
         >
-          Add Skill
+          Back
         </button>
+        <button type="submit">Finalize</button>
       </div>
-      <button
-        type="button"
-        onClick={handlePrevious}
-      >
-        Back
-      </button>
-      <button type="submit">Next</button>
     </form>
   );
 }

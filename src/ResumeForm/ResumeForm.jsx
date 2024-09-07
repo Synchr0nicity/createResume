@@ -15,7 +15,7 @@ export default function ResumeForm({
   setActive,
 }) {
   const [currentSection, setCurrentSection] =
-    useState(0);
+    useState(1);
 
   useEffect(() => {
     console.log("Updated formData:", formData);
@@ -36,8 +36,21 @@ export default function ResumeForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCurrentSection(
-      (prevSection) => prevSection + 1
+    if (currentSection === 5) {
+      finalSubmit();
+    } else {
+      setCurrentSection(
+        (prevSection) => prevSection + 1
+      );
+    }
+  };
+
+  const finalSubmit = () => {
+    alert(
+      "congratulations, you completed your resume."
+    );
+    setActive(
+      (prevActive) => (prevActive = false)
     );
   };
 
@@ -48,7 +61,7 @@ export default function ResumeForm({
   };
 
   return (
-    <div className="form">
+    <div className="formContainer">
       {currentSection === 1 && (
         <PersonalInformation
           handleChange={handleChange}
@@ -58,31 +71,6 @@ export default function ResumeForm({
         />
       )}
       {currentSection === 2 && (
-        <Projects
-          formData={formData}
-          setFormData={setFormData}
-          currentSection={currentSection}
-          setCurrentSection={setCurrentSection}
-          handlePrevious={handlePrevious}
-        />
-      )}
-      {currentSection === 3 && (
-        <Experience
-          formData={formData}
-          setFormData={setFormData}
-          setCurrentSection={setCurrentSection}
-          handlePrevious={handlePrevious}
-        />
-      )}
-      {currentSection === 4 && (
-        <ExtraDetails
-          formData={formData}
-          setFormData={setFormData}
-          setCurrentSection={setCurrentSection}
-          handlePrevious={handlePrevious}
-        />
-      )}
-      {currentSection === 5 && (
         <ContactDetails
           handleChange={handleChange}
           formData={formData}
@@ -90,6 +78,35 @@ export default function ResumeForm({
           active={active}
           setActive={setActive}
           handlePrevious={handlePrevious}
+        />
+      )}
+      {currentSection === 3 && (
+        <Projects
+          formData={formData}
+          setFormData={setFormData}
+          currentSection={currentSection}
+          setCurrentSection={setCurrentSection}
+          handlePrevious={handlePrevious}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      {currentSection === 4 && (
+        <Experience
+          formData={formData}
+          setFormData={setFormData}
+          setCurrentSection={setCurrentSection}
+          handlePrevious={handlePrevious}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      {currentSection === 5 && (
+        <ExtraDetails
+          formData={formData}
+          setFormData={setFormData}
+          setCurrentSection={setCurrentSection}
+          handlePrevious={handlePrevious}
+          setActive={setActive}
+          handleSubmit={handleSubmit}
         />
       )}
     </div>

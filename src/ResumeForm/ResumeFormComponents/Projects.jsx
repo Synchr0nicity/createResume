@@ -5,6 +5,7 @@ export default function Projects({
   setFormData,
   setCurrentSection,
   handlePrevious,
+  handleSubmit,
 }) {
   useEffect(() => {
     if (
@@ -57,17 +58,13 @@ export default function Projects({
     });
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setCurrentSection(
-      (prevSection) => prevSection + 1
-    );
-  };
-
   const projects = formData.projects || {};
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="projectsForm"
+    >
       <h2>Projects and Applications</h2>
 
       {Object.keys(projects).map((projectId) => (
@@ -81,21 +78,18 @@ export default function Projects({
           handleRemove={() =>
             handleRemove(projectId)
           }
+          handleAdd={handleNewProject}
         />
       ))}
-      <button
-        type="button"
-        onClick={handleNewProject}
-      >
-        Add new project
-      </button>
-      <button
-        type="button"
-        onClick={handlePrevious}
-      >
-        Back
-      </button>
-      <button type="submit">Next</button>
+      <div className="btnContainer">
+        <button
+          type="button"
+          onClick={handlePrevious}
+        >
+          Back
+        </button>
+        <button type="submit">Next</button>
+      </div>
     </form>
   );
 }
