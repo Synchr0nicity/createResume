@@ -8,50 +8,40 @@ body {
   padding: 0;
 }
 
-/* Style the form with grid */
 form {
   background-color: white;
   padding: 0 0px 20px 20px;
   display: grid;
-  gap: 1rem; /* Space between grid items */
+  gap: 1rem;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto; /* Center the form horizontally */
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* Two equal columns */
+  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-/* Ensure each input-label pair is a grid item */
 form > div {
-  display: contents; /* Allows div to use the parent grid structure */
+  display: contents;
 }
 
-/* Full width for text areas (single-column layout) */
 form textarea {
-  grid-column: 1 / -1; /* Span across all columns */
+  grid-column: 1 / -1;
 }
 
-/* Style the labels */
 form label {
-  grid-column: span 1; /* Span only one column */
+  grid-column: span 1;
 }
 
-/* Style the input fields */
 form input {
-  grid-column: span 1; /* Span only one column */
+  grid-column: span 1;
 }
 
-/* Full width for h2 headings */
 form h2 {
-  grid-column: 1 / -1; /* Span across all columns */
+  grid-column: 1 / -1;
 }
 
-/* Full width for the submit button */
 form button[type="submit"] {
-  grid-column: 1 / -1; /* Span across all columns */
-  justify-self: center; /* Center the button horizontally */
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 
 .mainContainer {
@@ -75,7 +65,6 @@ form button[type="submit"] {
   max-width: 475.5px;
   margin: 10px 0 0 50px;
   padding: 24px;
-  border: none;
   border-radius: 8px;
 }
 
@@ -93,7 +82,6 @@ form button[type="submit"] {
   margin: 10px 0 0 50px;
   padding: 24px;
   border-radius: 8px;
-  /* margin-top: 200px; */
 }
 
 .experienceForm {
@@ -102,10 +90,8 @@ form button[type="submit"] {
   margin: 10px 0 0 50px;
   padding: 24px;
   border-radius: 8px;
-  /* margin-top: 200px; */
 }
 
-/* input forms */
 input,
 textarea {
   padding: 8px;
@@ -138,10 +124,6 @@ button:active {
   gap: 10px;
   grid-column: 1 / -1;
   margin: 0 auto;
-  /* position: absolute;
-  gap: 15px;
-  top: 80%;
-  left: 33%; */
 }
 
 .btnRemoveContainer {
@@ -156,8 +138,6 @@ img {
   cursor: pointer;
 }
 
-/* extra details form sextion */
-
 .extraDetailsForm {
   display: flex;
   flex-direction: column;
@@ -166,7 +146,6 @@ img {
   margin: 10px 0 0 50px;
   padding: 24px;
   border-radius: 8px;
-  /* margin-top: 420px; */
 }
 
 .extraDetailsForm input {

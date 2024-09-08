@@ -3,7 +3,6 @@ import { useEffect } from "react";
 export default function Projects({
   formData,
   setFormData,
-  setCurrentSection,
   handlePrevious,
   handleSubmit,
 }) {

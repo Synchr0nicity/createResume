@@ -3,9 +3,7 @@ import { useEffect } from "react";
 export default function ExtraDetails({
   formData,
   setFormData,
-  setCurrentSection,
   handlePrevious,
-  setActive,
   handleSubmit,
 }) {
   useEffect(() => {

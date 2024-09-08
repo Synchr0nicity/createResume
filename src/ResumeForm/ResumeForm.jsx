@@ -70,13 +70,6 @@ export default function ResumeForm({
       "Congratulations, you completed your resume."
     );
     setActive(false);
-
-    // const newSection = currentSection + 1;
-    // setCurrentSection(newSection);
-    // localStorage.setItem(
-    //   "currentSection",
-    //   newSection
-    // );
   };
 
   const handlePrevious = () => {
@@ -88,7 +81,7 @@ export default function ResumeForm({
           JSON.stringify(newSection)
         );
         return newSection;
-      }); // Decrement currentSection to go back
+      });
     }
   };
 

@@ -43,8 +43,8 @@ export default function PersonalInformation({
         }
         data-section="personalInformation"
         onChange={handleChange}
-        rows="4" // Adjust the number of visible rows
-        cols="50" // Adjust the width in characters
+        rows="4"
+        cols="50"
         placeholder="Personal Summary"
         required
       />

@@ -4,7 +4,6 @@ import CreateNewJobs from "/src/ResumeForm/ResumeFormComponents/ExperienceCompon
 export default function Experience({
   formData,
   setFormData,
-  setCurrentSection,
   handlePrevious,
   handleSubmit,
 }) {
