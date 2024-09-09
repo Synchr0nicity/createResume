@@ -30,7 +30,7 @@ export default function CreateNewJobs({
         required
       />
       <input
-        type="text"
+        type="date"
         id={`timeframe${jobId}`}
         name="timeframe"
         value={job.timeframe || ""}
