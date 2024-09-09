@@ -210,3 +210,18 @@ section {
 #editBtn:active {
   transform: scale(0.95);
 }
+
+a {
+  font-weight: bold;
+  color: white;
+  background-color: rgb(88, 85, 85);
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 8px;
+  text-decoration: none;
+  font-style: italic;
+  border: solid #333 2px;
+  position: fixed;
+  bottom: 1%;
+  left: 2%;
+}

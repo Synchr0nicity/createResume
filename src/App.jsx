@@ -59,6 +59,9 @@ function App() {
 
   return (
     <div className="mainContainer">
+      <a href="https://www.github.com/synchr0nicity">
+        Generate a Resume by Synchr0nicity
+      </a>
       {active && (
         <ResumeForm
           active={active}

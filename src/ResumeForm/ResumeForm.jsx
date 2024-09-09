@@ -3,8 +3,8 @@ import React, {
   useEffect,
 } from "react";
 import PersonalInformation from "/src/ResumeForm/ResumeFormComponents/PersonalInformation.jsx";
-import Projects from "/src/ResumeForm/ResumeFormComponents/Projects.jsx";
-import Experience from "/src/ResumeForm/ResumeFormComponents/Experience.jsx";
+import Projects from "/src/ResumeForm/ResumeFormComponents/ProjectComponents/Projects.jsx";
+import Experience from "/src/ResumeForm/ResumeFormComponents/ExperienceComponents/Experience.jsx";
 import ExtraDetails from "/src/ResumeForm/ResumeFormComponents/ExtraDetails.jsx";
 import ContactDetails from "/src/ResumeForm/ResumeFormComponents/ContactDetails.jsx";
 
