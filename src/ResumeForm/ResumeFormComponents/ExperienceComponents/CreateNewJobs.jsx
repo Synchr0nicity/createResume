@@ -55,14 +55,14 @@ export default function CreateNewJobs({
       />
       <div className="btnContainer">
         <img
-          src="/icons8-add-32 (1).png"
-          type="button"
-          onClick={handleAdd}
-        />
-        <img
           src="/icons8-remove-32 (1).png"
           type="button"
           onClick={handleRemove}
+        />
+        <img
+          src="/icons8-add-32 (1).png"
+          type="button"
+          onClick={handleAdd}
         />
       </div>
     </div>

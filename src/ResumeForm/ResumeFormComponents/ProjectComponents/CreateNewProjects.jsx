@@ -49,7 +49,7 @@ export default function CreateNewProjects({
           className="removeIcon"
         />
         <img
-          src="public/icons8-add-32 (1).png"
+          src="/icons8-add-32 (1).png"
           type="button"
           onClick={handleAdd}
           className="addIcon"
