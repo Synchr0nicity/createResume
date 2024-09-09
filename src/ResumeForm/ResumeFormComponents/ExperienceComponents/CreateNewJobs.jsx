@@ -31,14 +31,26 @@ export default function CreateNewJobs({
       />
       <input
         type="date"
-        id={`timeframe${jobId}`}
-        name="timeframe"
-        value={job.timeframe || ""}
+        id={`startDate${jobId}`}
+        name="startDate"
+        value={job.startDate || ""}
         data-section="experience"
         onChange={(e) =>
-          handleChange(e, "timeframe")
+          handleChange(e, "startDate")
         }
-        placeholder="Timeframe"
+        placeholder="Start Date"
+        required
+      />
+      <input
+        type="date"
+        id={`endDate${jobId}`}
+        name="endDate"
+        value={job.endDate || ""}
+        data-section="experience"
+        onChange={(e) =>
+          handleChange(e, "endDate")
+        }
+        placeholder="End Date"
         required
       />
       <textarea

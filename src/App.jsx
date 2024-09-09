@@ -29,7 +29,8 @@ function App() {
       0: {
         role: "",
         company: "",
-        timeframe: "",
+        startDate: "",
+        endDate: "",
         jobDescription: "",
       },
     },

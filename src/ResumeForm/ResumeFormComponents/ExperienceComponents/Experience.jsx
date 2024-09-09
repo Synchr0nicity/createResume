@@ -25,7 +25,8 @@ export default function Experience({
         [jobId]: {
           role: "",
           company: "",
-          timeframe: "",
+          startDate: "",
+          endDate: "",
           jobDescription: "",
         },
       },

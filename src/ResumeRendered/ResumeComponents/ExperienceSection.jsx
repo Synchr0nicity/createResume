@@ -25,8 +25,8 @@ export default function ExperienceSection({
                 </h3>
 
                 <small>
-                  {job.timeframe ||
-                    "3/2023-4/2024"}
+                  {job.startDate || "3/2023"} -
+                  {job.endDate || "4/2024"}
                 </small>
               </div>
               <p>
