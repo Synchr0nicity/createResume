@@ -19,7 +19,7 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
-        placeholder="https://www.Website.com"
+        placeholder="https://www.website.com"
         required
       />
       <input
