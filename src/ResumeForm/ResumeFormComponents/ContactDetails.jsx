@@ -19,7 +19,7 @@ export default function ContactDetails({
         }
         data-section="contactDetails"
         onChange={handleChange}
-        placeholder="Github"
+        placeholder="https://www.Website.com"
         required
       />
       <input

@@ -16,6 +16,7 @@ export default function ResumeForm({
 }) {
   const [currentSection, setCurrentSection] =
     useState(1);
+
   useEffect(() => {
     const storedFormData =
       localStorage.getItem("formData");
