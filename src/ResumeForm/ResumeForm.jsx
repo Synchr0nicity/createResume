@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 import PersonalInformation from "/src/ResumeForm/ResumeFormComponents/PersonalInformation.jsx";
 import Projects from "/src/ResumeForm/ResumeFormComponents/ProjectComponents/Projects.jsx";
 import Experience from "/src/ResumeForm/ResumeFormComponents/ExperienceComponents/Experience.jsx";
@@ -14,62 +11,73 @@ export default function ResumeForm({
   active,
   setActive,
 }) {
-  const [currentSection, setCurrentSection] =
-    useState(1);
+  const [currentSection, setCurrentSection] = useState(1);
 
   useEffect(() => {
-    const storedFormData =
-      localStorage.getItem("formData");
-    const storedSectionData =
-      localStorage.getItem("currentSection");
+    const storedFormData = localStorage.getItem("formData");
+    const storedSectionData = localStorage.getItem("currentSection");
 
     if (storedFormData) {
       setFormData(JSON.parse(storedFormData));
     }
 
     if (storedSectionData) {
-      setCurrentSection(
-        JSON.parse(storedSectionData)
-      );
+      setCurrentSection(JSON.parse(storedSectionData));
     }
   }, []);
 
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
-    const section = dataset.section;
 
-    setFormData((prevData) => ({
-      ...prevData,
-      [section]: {
-        ...prevData[section],
-        [name]: value,
-      },
-    }));
+    console.log("INPUT EVENT:", {
+      name,
+      value,
+      section: dataset.section,
+    });
+
+    const section = dataset.section.split(".");
+
+    setFormData((prevData) => {
+      const newData =
+        section.length < 2
+          ? {
+              ...prevData,
+              [section[0]]: {
+                ...prevData[section[0]],
+                [name]: value,
+              },
+            }
+          : {
+              ...prevData,
+              [section[0]]: {
+                ...prevData[section[0]],
+                [section[1]]: {
+                  ...prevData[section[0]]?.[section[1]],
+                  [name]: value,
+                },
+              },
+            };
+
+      console.log("NEW DATA:", newData);
+
+      return newData;
+    });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem(
-      "formData",
-      JSON.stringify(formData)
-    );
+    localStorage.setItem("formData", JSON.stringify(formData));
 
     if (currentSection === 5) {
       finalSubmit();
     } else {
       const newSection = currentSection + 1;
       setCurrentSection(newSection);
-      localStorage.setItem(
-        "currentSection",
-        newSection
-      );
+      localStorage.setItem("currentSection", newSection);
     }
   };
 
   const finalSubmit = () => {
-    alert(
-      "Congratulations, you completed your resume."
-    );
+    alert("Congratulations, you completed your resume.");
     setActive(false);
   };
 
@@ -77,10 +85,7 @@ export default function ResumeForm({
     if (currentSection > 0) {
       setCurrentSection((prev) => {
         const newSection = prev - 1;
-        localStorage.setItem(
-          "currentSection",
-          JSON.stringify(newSection)
-        );
+        localStorage.setItem("currentSection", JSON.stringify(newSection));
         return newSection;
       });
     }

@@ -6,11 +6,9 @@ import ExperienceSection from "/src/ResumeRendered/ResumeComponents/ExperienceSe
 import ExtraDetailsSection from "/src/ResumeRendered/ResumeComponents/ExtraDetailsSection.jsx";
 
 const Resume = forwardRef(({ formData }, ref) => {
+  console.log("form data", formData.contactDetails.websites);
   const NumberList = ({ number }) => {
-    const numbers = Array.from(
-      { length: number },
-      (_, i) => i + 1
-    );
+    const numbers = Array.from({ length: number }, (_, i) => i + 1);
 
     return (
       <div className="number-list">
@@ -22,10 +20,7 @@ const Resume = forwardRef(({ formData }, ref) => {
   };
 
   return (
-    <div
-      ref={ref}
-      className="resumeContainer shadow"
-    >
+    <div ref={ref} className="resumeContainer shadow">
       <div className="resumeMargin">
         <NumberList number={30} />
       </div>
@@ -33,14 +28,10 @@ const Resume = forwardRef(({ formData }, ref) => {
         <main>
           <Header formData={formData} />
           <ProjectsSection formData={formData} />
-          <ExperienceSection
-            formData={formData}
-          />
+          <ExperienceSection formData={formData} />
         </main>
         <footer>
-          <ExtraDetailsSection
-            formData={formData}
-          />
+          <ExtraDetailsSection formData={formData} />
         </footer>
       </div>
     </div>

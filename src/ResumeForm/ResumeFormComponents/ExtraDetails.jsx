@@ -11,7 +11,7 @@ export default function ExtraDetails({
       setFormData((prevFormData) => ({
         ...prevFormData,
         extraDetails: {
-          qualities: [{ name: "" }],
+          // qualities: [{ name: "" }],
           skills: [{ name: "" }],
         },
       }));
@@ -26,9 +26,7 @@ export default function ExtraDetails({
         ...prevData.extraDetails,
       };
 
-      const updatedTypeArray = [
-        ...updatedExtraDetails[type],
-      ];
+      const updatedTypeArray = [...updatedExtraDetails[type]];
 
       const updatedItem = {
         ...updatedTypeArray[index],
@@ -36,8 +34,7 @@ export default function ExtraDetails({
       };
 
       updatedTypeArray[index] = updatedItem;
-      updatedExtraDetails[type] =
-        updatedTypeArray;
+      updatedExtraDetails[type] = updatedTypeArray;
       return {
         ...prevData,
         extraDetails: updatedExtraDetails,
@@ -51,10 +48,7 @@ export default function ExtraDetails({
         ...prevData,
         extraDetails: {
           ...prevData.extraDetails,
-          [type]: [
-            ...prevData.extraDetails[type],
-            { name: "" },
-          ],
+          [type]: [...prevData.extraDetails[type], { name: "" }],
         },
       };
       return updatedData;
@@ -66,16 +60,13 @@ export default function ExtraDetails({
       const updatedExtraDetails = {
         ...prevData.extraDetails,
       };
-      const updatedTypeArray = [
-        ...updatedExtraDetails[type],
-      ];
+      const updatedTypeArray = [...updatedExtraDetails[type]];
 
       if (updatedTypeArray.length > 1) {
         updatedTypeArray.splice(index, 1);
       }
 
-      updatedExtraDetails[type] =
-        updatedTypeArray;
+      updatedExtraDetails[type] = updatedTypeArray;
 
       return {
         ...prevData,
@@ -85,36 +76,27 @@ export default function ExtraDetails({
   }
 
   function renderLists(type) {
-    return formData.extraDetails[type].map(
-      (item, index) => {
-        return (
-          <div
-            key={`${type}-${index}`}
-            className="btnRemoveContainer"
-          >
-            <img
-              type="button"
-              onClick={() =>
-                handleRemove(type, index)
-              }
-              src="/icons8-remove-32 (1).png"
-              alt="remove icon"
-            />
-            <input
-              type="text"
-              id={`${type}-${index}`}
-              name={type}
-              value={item.name}
-              onChange={(e) =>
-                handleChange(e, type, index)
-              }
-              placeholder={`${type}`}
-              required
-            />
-          </div>
-        );
-      }
-    );
+    return formData.extraDetails[type].map((item, index) => {
+      return (
+        <div key={`${type}-${index}`} className="btnRemoveContainer">
+          <img
+            type="button"
+            onClick={() => handleRemove(type, index)}
+            src="/icons8-remove-32 (1).png"
+            alt="remove icon"
+          />
+          <input
+            type="text"
+            id={`${type}-${index}`}
+            name={type}
+            value={item.name}
+            onChange={(e) => handleChange(e, type, index)}
+            placeholder={`${type}`}
+            required
+          />
+        </div>
+      );
+    });
   }
 
   if (!formData.extraDetails) {
@@ -122,12 +104,9 @@ export default function ExtraDetails({
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="extraDetailsForm"
-    >
+    <form onSubmit={handleSubmit} className="extraDetailsForm">
       <div id="extraDetailsContainer">
-        <div id="qualities">
+        {/* <div id="qualities">
           <div className="addDetailsContainer">
             <h2>Qualities</h2>
             <img
@@ -140,7 +119,7 @@ export default function ExtraDetails({
             />
           </div>
           {renderLists("qualities")}
-        </div>
+        </div> */}
         <div id="skills">
           <div className="addDetailsContainer">
             <h2>Skills</h2>
@@ -155,10 +134,7 @@ export default function ExtraDetails({
         </div>
       </div>
       <div className="btnContainer">
-        <button
-          type="button"
-          onClick={handlePrevious}
-        >
+        <button type="button" onClick={handlePrevious}>
           Back
         </button>
         <button type="submit">Finalize</button>

@@ -13,7 +13,7 @@ function App() {
       summary: "",
     },
     contactDetails: {
-      gitHub: "",
+      websites: { gitHub: "", linkedin: "" },
       email: "",
       whatsapp: "",
       address: "",
@@ -35,7 +35,7 @@ function App() {
       },
     },
     extraDetails: {
-      qualities: [{ name: "" }],
+      // qualities: [{ name: "" }],
       skills: [{ name: "" }],
     },
   });
@@ -71,30 +71,20 @@ function App() {
           setFormData={setFormData}
         />
       )}
-      <Resume
-        formData={formData}
-        ref={contentRef}
-      />
+      <Resume formData={formData} ref={contentRef} />
       {!active && (
         <div className="finalBtnsContainer">
           <button
             type="button"
             onClick={() => {
-              setActive(
-                (prevActive) =>
-                  (prevActive = true)
-              );
+              setActive((prevActive) => (prevActive = true));
             }}
             id="editBtn"
           >
             <i className="fas fa-edit" />
             Edit Resume
           </button>
-          <button
-            type="button"
-            onClick={generatePDF}
-            id="pdfBtn"
-          >
+          <button type="button" onClick={generatePDF} id="pdfBtn">
             <i className="fas fa-download" />
             Download as PDF
           </button>
