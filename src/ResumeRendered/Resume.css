@@ -1,3 +1,7 @@
+body {
+  font-family: "Arial" !important;
+}
+
 .resumeContainer {
   margin: 0 auto 0 auto;
   width: 210.5mm;
@@ -115,10 +119,15 @@ section {
 /* Project section */
 
 .projectsContainer {
-  max-width: 97%;
+  max-width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
+
+  /* align-items: center; */
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 12px;
 }
 
 /* experience section */
@@ -128,23 +137,31 @@ section {
 
 .experienceSection .miniContainer {
   display: flex;
-  gap: 45px;
+  /* gap: 20px; */
+  justify-content: space-between;
   align-items: center;
+}
+
+.experienceBox h3 {
+  gap: 0;
+  margin: 0;
 }
 
 .experienceContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 12px;
 }
 
 /* extra Details section */
-.extraDetailsSection {
+/* .extraDetailsSection {
   display: flex;
   justify-content: space-between;
   gap: 100px;
   max-width: 97%;
-}
+} */
 
 .skillsContainer {
   margin-left: auto;

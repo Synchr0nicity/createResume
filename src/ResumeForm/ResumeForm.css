@@ -139,7 +139,7 @@ img {
   cursor: pointer;
 }
 
-.extraDetailsForm {
+/* .extraDetailsForm {
   display: flex;
   flex-direction: column;
   min-width: 475.5px;
@@ -147,8 +147,8 @@ img {
   margin: 10px 0 0 50px;
   padding: 24px;
   border-radius: 8px;
-}
-
+} */
+/* 
 .extraDetailsForm input {
   margin-bottom: 4px;
 }
@@ -156,15 +156,15 @@ img {
 #extraDetailsContainer {
   display: flex;
   justify-content: space-between;
-}
-
+} */
+/* 
 #qualities {
   min-height: 70px;
-}
+} */
 
-#skills {
+/* #skills {
   min-height: 70px;
-}
+} */
 
 .addDetailsContainer {
   display: flex;

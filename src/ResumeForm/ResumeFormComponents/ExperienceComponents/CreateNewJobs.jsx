@@ -23,9 +23,7 @@ export default function CreateNewJobs({
         name="company"
         value={job.company || ""}
         data-section="experience"
-        onChange={(e) =>
-          handleChange(e, "company")
-        }
+        onChange={(e) => handleChange(e, "company")}
         placeholder="Company"
         required
       />
@@ -35,9 +33,7 @@ export default function CreateNewJobs({
         name="startDate"
         value={job.startDate || ""}
         data-section="experience"
-        onChange={(e) =>
-          handleChange(e, "startDate")
-        }
+        onChange={(e) => handleChange(e, "startDate")}
         placeholder="Start Date"
         required
       />
@@ -47,20 +43,15 @@ export default function CreateNewJobs({
         name="endDate"
         value={job.endDate || ""}
         data-section="experience"
-        onChange={(e) =>
-          handleChange(e, "endDate")
-        }
+        onChange={(e) => handleChange(e, "endDate")}
         placeholder="End Date"
-        required
       />
       <textarea
         id={`jobDescription${jobId}`}
         name="jobDescription"
         value={job.jobDescription || ""}
         data-section="experience"
-        onChange={(e) =>
-          handleChange(e, "jobDescription")
-        }
+        onChange={(e) => handleChange(e, "jobDescription")}
         rows="4"
         cols="50"
         placeholder="Job Description"
@@ -71,11 +62,7 @@ export default function CreateNewJobs({
           type="button"
           onClick={handleRemove}
         />
-        <img
-          src="/icons8-add-32 (1).png"
-          type="button"
-          onClick={handleAdd}
-        />
+        <img src="/icons8-add-32 (1).png" type="button" onClick={handleAdd} />
       </div>
     </div>
   );

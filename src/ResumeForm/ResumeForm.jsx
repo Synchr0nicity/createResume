@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PersonalInformation from "/src/ResumeForm/ResumeFormComponents/PersonalInformation.jsx";
 import Projects from "/src/ResumeForm/ResumeFormComponents/ProjectComponents/Projects.jsx";
 import Experience from "/src/ResumeForm/ResumeFormComponents/ExperienceComponents/Experience.jsx";
-import ExtraDetails from "/src/ResumeForm/ResumeFormComponents/ExtraDetails.jsx";
+// import ExtraDetails from "/src/ResumeForm/ResumeFormComponents/ExtraDetails.jsx";
 import ContactDetails from "/src/ResumeForm/ResumeFormComponents/ContactDetails.jsx";
 
 export default function ResumeForm({
@@ -67,7 +67,7 @@ export default function ResumeForm({
     e.preventDefault();
     localStorage.setItem("formData", JSON.stringify(formData));
 
-    if (currentSection === 5) {
+    if (currentSection === 4) {
       finalSubmit();
     } else {
       const newSection = currentSection + 1;
@@ -90,6 +90,9 @@ export default function ResumeForm({
       });
     }
   };
+
+  // setCurrentSection(1)
+  console.log("current section", currentSection);
 
   return (
     <div className={"formContainer"}>
@@ -130,16 +133,16 @@ export default function ResumeForm({
           handleSubmit={handleSubmit}
         />
       )}
-      {currentSection === 5 && (
-        <ExtraDetails
-          formData={formData}
-          setFormData={setFormData}
-          setCurrentSection={setCurrentSection}
-          handlePrevious={handlePrevious}
-          setActive={setActive}
-          handleSubmit={handleSubmit}
-        />
-      )}
+      {/*{currentSection === 5 && (
+       // <ExtraDetails
+      //    formData={formData}
+          // setFormData={setFormData}
+    //      setCurrentSection={setCurrentSection}
+        //   handlePrevious={handlePrevious}
+        //   setActive={setActive}
+        //   handleSubmit={handleSubmit}
+        // />
+      // )} */}
     </div>
   );
 }

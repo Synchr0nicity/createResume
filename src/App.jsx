@@ -34,10 +34,10 @@ function App() {
         jobDescription: "",
       },
     },
-    extraDetails: {
-      // qualities: [{ name: "" }],
-      skills: [{ name: "" }],
-    },
+    // extraDetails: {
+    // qualities: [{ name: "" }],
+    //   skills: [{ name: "" }],
+    // },
   });
   const [active, setActive] = useState(true);
 

@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import Header from "/src/ResumeRendered/ResumeComponents/Header.jsx";
 import ProjectsSection from "/src/ResumeRendered/ResumeComponents/ProjectsSection.jsx";
 import ExperienceSection from "/src/ResumeRendered/ResumeComponents/ExperienceSection.jsx";
-import ExtraDetailsSection from "/src/ResumeRendered/ResumeComponents/ExtraDetailsSection.jsx";
+// import ExtraDetailsSection from "/src/ResumeRendered/ResumeComponents/ExtraDetailsSection.jsx";
 
 const Resume = forwardRef(({ formData }, ref) => {
   console.log("form data", formData.contactDetails.websites);
@@ -30,9 +30,9 @@ const Resume = forwardRef(({ formData }, ref) => {
           <ProjectsSection formData={formData} />
           <ExperienceSection formData={formData} />
         </main>
-        <footer>
+        {/* <footer>
           <ExtraDetailsSection formData={formData} />
-        </footer>
+        </footer> */}
       </div>
     </div>
   );

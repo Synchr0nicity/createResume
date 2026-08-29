@@ -12,7 +12,7 @@ export default function ExtraDetailsSection({ formData }) {
           })}
         </ul>
       </div> */}
-      <div className="skillsContainer">
+      {/* <div className="skillsContainer">
         <h4>
           <span className="symbols">/</span>
           Skills
@@ -26,7 +26,7 @@ export default function ExtraDetailsSection({ formData }) {
             );
           })}
         </ul>
-      </div>
+      </div> */}
     </section>
   );
 }
